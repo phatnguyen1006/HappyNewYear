@@ -2,4 +2,5 @@
 Best wish for my team.
 
 
-Chúc anh em năm mới thuận lợi, may mắn, vui vẻ 😊😊😊 - from Long Vịt with love ♥
+# Nguyễn Khuê
+  * Log.d("Chúc ae năm mới vui vẻ hạnh phúc, code bay đồ án") from Kotlin.
