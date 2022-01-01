@@ -2,6 +2,10 @@
 
 Best wish for my team.
 
+# Khôi Lê
+
+- print("Chúc anh em năm mới code kh bug") 
+
 # Nguyễn Khuê
 
 - Log.d("Chúc ae năm mới vui vẻ hạnh phúc, code bay đồ án") from Kotlin.
