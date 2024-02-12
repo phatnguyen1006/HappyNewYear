@@ -20,3 +20,10 @@ function beAWiseHealthyWealthyGorgeousPotato {
 	return true;
 }
 ```
+
+## Leong
+```kotlin
+interface My2024 {
+    fun increaseIncome()
+    fun levelUp()
+}
