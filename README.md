@@ -9,3 +9,8 @@ protocol Abstract2024 {
     func keepHealthyLifestyle() -> Void
 }
 ```
+## KL
+protocol 2024 {
+    func noBodyGetsMarried() -> Bool
+    func beWealthy() -> Void
+}
