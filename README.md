@@ -14,3 +14,9 @@ protocol 2024 {
     func noBodyGetsMarried() -> Bool
     func beWealthy() -> Void
 }
+## Latte
+```javascript
+function beAWiseHealthyWealthyGorgeousPotato {
+	return true;
+}
+```
