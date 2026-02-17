@@ -1,132 +1,56 @@
-# HappyNewYear_2025
+# HappyNewYear_2026
 
-Chúc một năm Sức Khỏe dồi dào, Tài Lộc đầy nhà, và Thành Công nối dài như 🐍🐍🐍
+## Leong
 
-Hy vọng năm nay, mọi người sẽ vượt qua mọi thử thách, sáng tạo không ngừng và gặt hái thêm nhiều thành tựu mới.
+Anh em năm mới ngựa phi nước đại, mã đáo thành công *hí họ*
 
-Vui như Tết, việc suôn sẻ, mọi ước mơ đều sớm thành hiện thực 🚀 🚀 🚀
+```c++
+#include <iostream>
+#include <concepts>
+#include <variant>
+#include <memory>
+#include <vector>
+#include <string>
 
-✨ Chúc mừng năm mới Ất Tỵ 2025! ✨
+// Concept kiểm tra xem Đạo hữu có đủ tư chất để thăng cấp không
+template<typename T>
+concept TuTiênGiả = requires(T t) {
+    { t.luyện_khí() } -> std::same_as<void>;
+    { t.đột_phá() }   -> std::same_as<bool>;
+};
 
-## Topic Ất Tỵ
+struct AndroidTuTiên {
+    void luyện_khí() { std::cout << "Hấp thụ linh khí từ Kotlin Coroutines...\n"; }
+    bool đột_phá()   { return true; } // Luôn thành công, không gặp tâm ma (bug)
+};
 
-Choose a principle from the SOLID principles and provide a sample code example to illustrate it clearly.
+static_assert(TuTiênGiả<AndroidTuTiên>, "AndroidTuTiên chưa đủ tư chất tu tiên!");
 
-### Single Responsibility Principle (Leong)
+int main() {
+    // Khởi tạo Tiên Phủ (Heap) bằng Smart Pointer để tránh "Tẩu hỏa nhập ma" (Memory Leak)
+    auto dao_huu = std::make_unique<AndroidTuTiên>();
 
-A class should have only one reason to change.
+    std::cout << "--- TU TIÊN LẬP TRÌNH GIỚI: BÍNH NGỌ 2026 ---\n";
 
-This principle emphasizes that a class should have a single, well-defined responsibility. If a class has multiple responsibilities, it becomes harder to maintain and test as changes in one responsibility can inadvertently affect others.
+    std::vector<std::string> thần_thông = {
+        "Đốn ngộ NDK: Xuất chiêu C++ nhanh như chớp giật",
+        "Luyện thể Kotlin: Thân pháp mượt mà, không giật lag",
+        "Trảm Bug: Nhất kiếm đoạt tuyệt mọi Exception",
+        "Tụ Linh Tài Lộc: Lương bổng tăng tiến, linh thạch đầy kho"
+    };
 
-Sample code: 
-
-```kotlin
-data class Customer(val name: String, val email: String, var address: String) {
-    fun updateAddress(newAddress: String) {
-        address = newAddress
-    }
-}
-
-class EmailSender {
-    fun sendWelcomeEmail(customer: Customer) {
-        // Logic to send a welcome email to the customer
-        println("Sending welcome email to ${customer.name}") 
-    }
-}
-
-class PurchaseCalculator {
-    fun calculateTotalPurchases(customer: Customer): Double {
-        // Logic to calculate the total amount spent by the customer
-        // (This would typically involve accessing a database or external service)
-        return 0.0 // Placeholder
-    }
-}
-```
-
-Advantages:
- - Improved Maintainability: If the email sending logic changes, only the `EmailSender` class needs modification. Similarly, changes to purchase calculation logic only affect the `PurchaseCalculator`.
- - Increased Testability: Each class can be tested independently, making it easier to identify and isolate bugs.
- - Enhanced Reusability: The `EmailSender` and `PurchaseCalculator` classes can be potentially reused in other parts of the application or even in other projects.
-
-
-### P --- The Liskov Substitution Principle (LSP)
-
-```swift
-enum YearState {
-    case `init`
-    case start
-    case finished
-}
-
-protocol YearTask {
-    var state: YearState { get set }
-    func start()
-    func finish()
-}
-
-class Year2024: YearTask {
-    lazy var state: YearState = .start {
-        didSet {
-            let announcement = switch state {
-            case .`init`: "2024 init"
-            case .start: "2024 is started 🏁🏁🏁"
-            case .finished: "2024 is finished 🎉🎉🎉"
-            }
-            print(announcement)
-        }
+    // Vận hành công pháp
+    for (const auto& chiêu_thức : thần_thông) {
+        std::cout << "[Luyện Thành] " << chiêu_thức << "... Thành công!\n";
     }
 
-    func start() {
-        state = .start
+    dao_huu->luyện_khí();
+
+    // Thành quả năm Bính Ngọ
+    if (dao_huu->đột_phá()) {
+        std::cout << "\n>>> CHÚC MỪNG ĐẠO HỮU: MÃ ĐÁO THÀNH CÔNG <<<\n";
     }
 
-    func finish() {
-        state = .finished
-    }
-}
-
-class Year2025: YearTask {
-    lazy var state: YearState = { .start }() {
-        didSet {
-            let announcement = switch state {
-            case .`init`: "2025 init"
-            case .start: "2025 is started 🏁🏁🏁"
-            case .finished: "2025 is finished 🎉🎉🎉"
-            }
-            print(announcement)
-        }
-    }
-
-    func start() {
-        state = .start
-        tryMyBest()
-    }
-
-    func finish() {
-        state = .finished
-    }
-
-    func tryMyBest() {
-        // Do it in 2025
-    }
-}
-
-final class YearFactory {
-    static func createYearTask(_ current: Int) -> YearTask? {
-        switch current {
-        case 2024: Year2024()
-        case 2025: Year2025()
-        default: Year2024()
-        }
-    }
-}
-
-func main() {
-    var year = 2024
-    let oldYear = YearFactory.createYearTask(year)
-    oldYear?.finish()
-    year += 1
-    let newYear = YearFactory.createYearTask(year)
-    newYear?.start()
+    return 0; // Viên mãn thu quân
 }
 ```
