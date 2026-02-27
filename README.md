@@ -54,3 +54,72 @@ int main() {
     return 0; // Viên mãn thu quân
 }
 ```
+
+## P
+Mong mọi sự thành công, sức khoẻ, điều lành sẽ đến với cuộc sống
+
+```swift
+import Foundation
+
+let __year__ = 2026
+
+enum Event: CaseIterable {
+    case chance
+    case incident
+    case normal
+}
+
+class MySelf {
+    func reach() {
+        print("Make it work")
+    }
+
+    func pass() {
+        print("Get through the tough times")
+    }
+
+    func hardWork() {
+        print("Accumulate experience")
+    }
+}
+
+struct Life {
+    var currentYear: Int {
+        Calendar.current.component(.year, from: .now)
+    }
+
+    func timeline() -> AsyncStream<Event> {
+        AsyncStream<Event> { continuation in
+            continuation.onTermination = { @Sendable termination in
+                print("=== Endless Effort ===")
+            }
+
+            Task {
+                while (currentYear <= __year__) {
+                    let timeByTime = UInt64((1...3).shuffled().first!) * 1_000_000_000
+                    try? await Task.sleep(nanoseconds: timeByTime)
+                    continuation.yield(Event.allCases.shuffled().first!)
+                }
+            }
+        }
+    }
+}
+
+func main() {
+    let life = Life()
+    let mySelf = MySelf()
+
+    Task {
+        for try await event in life.timeline() {
+            switch event {
+            case .chance:
+                mySelf.reach()
+            case .incident:
+                mySelf.pass()
+            default:
+                mySelf.hardWork()
+            }
+        }
+    }
+}
+```
